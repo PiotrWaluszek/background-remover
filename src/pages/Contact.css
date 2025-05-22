@@ -1,0 +1,90 @@
+.contact {
+  padding: 3rem 0;
+  color: #333;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-intro h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.contact-intro p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.contact-persons {
+  margin-bottom: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.contact-person {
+  margin-bottom: 2rem;
+}
+
+.contact-person:last-child {
+  margin-bottom: 0;
+}
+
+.person-name {
+  color: #333; /* Zmienione na czarny */
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.person-contact {
+  margin-bottom: 0.75rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  color: #6366F1;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.email-icon {
+  margin-top: -2px;
+}
+
+@media (max-width: 768px) {
+  .contact-person {
+    text-align: center;
+  }
+  
+  .contact-link {
+    justify-content: center;
+  }
+}

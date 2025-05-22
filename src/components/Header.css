@@ -1,0 +1,66 @@
+.app-header {
+    background-color: var(--card-background);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+  }
+  
+  .app-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon {
+    font-size: 1.75rem;
+    margin-right: 0.5rem;
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  nav ul li {
+    margin-left: 1.5rem;
+  }
+  
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+  
+  @media (max-width: 768px) {
+    .app-header .container {
+      flex-direction: column;
+    }
+    
+    .logo {
+      margin-bottom: 1rem;
+    }
+    
+    nav ul li {
+      margin: 0 0.75rem;
+    }
+  }
+  
+  .logo-link {
+    text-decoration: none;
+  }
+  

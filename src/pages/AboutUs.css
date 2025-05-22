@@ -1,0 +1,157 @@
+.about-us {
+  padding: 3rem 0;
+  color: #333;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.university-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.logo-container {
+  margin-bottom: 1.5rem;
+}
+
+.agh-logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.university-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.faculty, .field, .semester, .course {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.team-section {
+  margin-bottom: 3rem;
+}
+
+.team-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.team-member {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.member-initials {
+  background-color: #4f46e5;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.member-details h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.member-name {
+  color: #333; /* Zmienione na czarny */
+  font-weight: 600;
+}
+
+.member-id {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.member-contact {
+  margin-bottom: 0.5rem;
+}
+
+.email-link, .github-link {
+  display: flex;
+  align-items: center;
+  color: #6366F1;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.email-link:hover, .github-link:hover {
+  text-decoration: underline;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.email-icon {
+  margin-top: -2px;
+}
+
+.project-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.project-section p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.project-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tech-tag {
+  background-color: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .member-initials {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .member-contact {
+    justify-content: center;
+  }
+  
+  .email-link, .github-link {
+    justify-content: center;
+  }
+}
