@@ -15,28 +15,66 @@ function App() {
   const [originalImage, setOriginalImage] = useState(null);
   const [processedImage, setProcessedImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
-  const handleImageUpload = async (file) => {
-    if (!file) return;
+  // Domyślne ustawienia edycji
+  const [editSettings, setEditSettings] = useState({
+    aiModel: 'original',
+    background: {
+      type: 'none',
+      blur: false,
+      color: '#ffffff',
+      image: null
+    },
+    effect: {
+      type: 'none',
+      color: '#000000'
+    },
+    blendingMethod: 'simple'
+  });
+
+  const handleImageUpload = async (file, settings = editSettings) => {
+    // Jeśli file jest null, używamy już zapisanego pliku (dla przycisku Zastosuj)
+    const imageToProcess = file || imageFile;
+    
+    if (!imageToProcess) return;
 
     const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-    if (!validTypes.includes(file.type)) {
+    if (!validTypes.includes(imageToProcess.type)) {
       toast.error('Proszę wybrać plik w formacie JPG lub PNG');
       return;
     }
 
-    // Wyświetl oryginalny obraz
-    setOriginalImage(URL.createObjectURL(file));
+    // Sprawdź niepoprawną konfigurację tylko gdy file nie jest null (nowy upload)
+    if (file && settings.background.type === 'original' && 
+        !settings.background.blur && 
+        settings.effect.type === 'none') {
+      toast.error('Niepoprawna konfiguracja: oryginalne tło bez rozmazania i efektów jest niedozwolone');
+      return;
+    }
+
+    // Wyświetl oryginalny obraz tylko przy pierwszym uploadzieu
+    if (file) {
+      setOriginalImage(URL.createObjectURL(imageToProcess));
+      setImageFile(imageToProcess);
+    }
+    
     setProcessedImage(null);
     setIsLoading(true);
 
     // Przygotuj dane do wysłania
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('image', imageToProcess);
+    formData.append('settings', JSON.stringify(settings));
+    
+    // Jeśli wybrano nowe tło jako obraz, dołącz go
+    if (settings.background.type === 'image' && settings.background.image) {
+      formData.append('backgroundImage', settings.background.image);
+    }
 
     try {
       // Wysyłanie na backend
-      const response = await fetch('http://twoj-backend.com/api/remove-background', {
+      const response = await fetch('http://127.0.0.1:8000/api/remove-background', {
         method: 'POST',
         body: formData,
       });
@@ -47,7 +85,7 @@ function App() {
 
       const data = await response.blob();
       setProcessedImage(URL.createObjectURL(data));
-      toast.success('Tło zostało pomyślnie usunięte!');
+      toast.success('Obraz został pomyślnie przetworzony!');
     } catch (error) {
       toast.error(error.message || 'Wystąpił błąd podczas przetwarzania obrazu');
       console.error('Error:', error);
@@ -56,11 +94,16 @@ function App() {
     }
   };
 
+  const handleSettingsChange = (newSettings) => {
+    setEditSettings(newSettings);
+    // Nie przetwarzaj automatycznie - czekaj na kliknięcie przycisku
+  };
+
   const handleDownload = () => {
     if (processedImage) {
       const link = document.createElement('a');
       link.href = processedImage;
-      link.download = 'obraz-bez-tla.png';
+      link.download = 'obraz-edytowany.png';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -80,6 +123,10 @@ function App() {
                 isLoading={isLoading}
                 onImageUpload={handleImageUpload}
                 onDownload={handleDownload}
+                editSettings={editSettings}
+                onSettingsChange={handleSettingsChange}
+                onApplySettings={() => imageFile && handleImageUpload(imageFile, editSettings)}
+                hasImage={!!originalImage}
               />
             } />
             <Route path="/jak-to-dziala" element={<HowItWorks />} />
