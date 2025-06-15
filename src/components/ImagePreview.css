@@ -30,11 +30,11 @@
   
   .image-container {
     padding: 1rem;
-    height: 300px;
+    /*height: 375px;*/
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
   }
   

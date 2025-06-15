@@ -34,7 +34,6 @@ function App() {
   });
 
   const handleImageUpload = async (file, settings = editSettings) => {
-    // Jeśli file jest null, używamy już zapisanego pliku (dla przycisku Zastosuj)
     const imageToProcess = file || imageFile;
     
     if (!imageToProcess) return;
@@ -45,7 +44,6 @@ function App() {
       return;
     }
 
-    // Sprawdź niepoprawną konfigurację tylko gdy file nie jest null (nowy upload)
     if (file && settings.background.type === 'original' && 
         !settings.background.blur && 
         settings.effect.type === 'none') {
@@ -53,7 +51,6 @@ function App() {
       return;
     }
 
-    // Wyświetl oryginalny obraz tylko przy pierwszym uploadzieu
     if (file) {
       setOriginalImage(URL.createObjectURL(imageToProcess));
       setImageFile(imageToProcess);
@@ -62,18 +59,15 @@ function App() {
     setProcessedImage(null);
     setIsLoading(true);
 
-    // Przygotuj dane do wysłania
     const formData = new FormData();
     formData.append('image', imageToProcess);
     formData.append('settings', JSON.stringify(settings));
     
-    // Jeśli wybrano nowe tło jako obraz, dołącz go
     if (settings.background.type === 'image' && settings.background.image) {
       formData.append('backgroundImage', settings.background.image);
     }
 
     try {
-      // Wysyłanie na backend
       const response = await fetch('http://127.0.0.1:8000/api/remove-background', {
         method: 'POST',
         body: formData,
@@ -96,7 +90,6 @@ function App() {
 
   const handleSettingsChange = (newSettings) => {
     setEditSettings(newSettings);
-    // Nie przetwarzaj automatycznie - czekaj na kliknięcie przycisku
   };
 
   const handleDownload = () => {

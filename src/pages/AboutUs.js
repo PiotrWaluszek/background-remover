@@ -79,17 +79,6 @@ const AboutUs = () => {
             <p>{t('aboutUs.projectDescription1')}</p>
             <p>{t('aboutUs.projectDescription2')}</p>
             
-            <h3>{t('aboutUs.technologiesTitle')}</h3>
-            <div className="technologies">
-              <span className="tech-tag">React</span>
-              <span className="tech-tag">JavaScript</span>
-              <span className="tech-tag">CSS3</span>
-              <span className="tech-tag">HTML5</span>
-              <span className="tech-tag">Python</span>
-              <span className="tech-tag">TensorFlow</span>
-              <span className="tech-tag">Flask</span>
-              <span className="tech-tag">Docker</span>
-            </div>
           </div>
         </div>
       </div>

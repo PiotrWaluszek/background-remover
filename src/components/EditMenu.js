@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { toast } from 'react-toastify';
 import './EditMenu.css';
 
 const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasImage }) => {
@@ -32,24 +34,24 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
   };
 
   const handleApplyClick = () => {
-    // Sprawdź niepoprawną konfigurację przed zastosowaniem
     if (settings.background.type === 'original' && 
         !settings.background.blur && 
         settings.effect.type === 'none') {
-      alert('Niepoprawna konfiguracja: oryginalne tło bez rozmazania i efektów jest niedozwolone');
+      toast.error('Niepoprawna konfiguracja: oryginalne tło bez rozmazania i efektów jest niedozwolone');
       return;
     }
     onApplySettings();
   };
 
+  const { t } = useLanguage();
+
   return (
     <div className="edit-menu">
-      <h3>Opcje edycji</h3>
+      <h3>{t('edit.title')}</h3>
       
       <div className="edit-sections">
-        {/* Model AI */}
         <div className="edit-section">
-          <h4>Model AI</h4>
+          <h4>{t('edit.model')}</h4>
           <div className="radio-group">
             <label>
               <input
@@ -60,7 +62,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleDirectSettingChange('aiModel', e.target.value)}
                 disabled={isLoading}
               />
-              Oryginalny
+              {t('edit.model_original')}
             </label>
             <label>
               <input
@@ -71,14 +73,13 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleDirectSettingChange('aiModel', e.target.value)}
                 disabled={isLoading}
               />
-              Własny
+              {t('edit.model_custom')}
             </label>
           </div>
         </div>
 
-        {/* Tło */}
         <div className="edit-section">
-          <h4>Tło</h4>
+          <h4>{t('edit.background')}</h4>
           <div className="radio-group">
             <label>
               <input
@@ -89,7 +90,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('background', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Oryginalne
+              {t('edit.background_original')}
             </label>
             <label>
               <input
@@ -100,7 +101,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('background', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Inny obraz
+              {t('edit.background_new')}
             </label>
             <label>
               <input
@@ -111,7 +112,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('background', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Pojedynczy kolor
+              {t('edit.background_color')}
             </label>
             <label>
               <input
@@ -122,11 +123,10 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('background', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Brak tła
+              {t('edit.background_none')}
             </label>
           </div>
 
-          {/* Opcje dla oryginalnego tła */}
           {settings.background.type === 'original' && (
             <div className="sub-options">
               <label className="checkbox-label">
@@ -136,12 +136,11 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                   onChange={(e) => handleSettingChange('background', 'blur', e.target.checked)}
                   disabled={isLoading}
                 />
-                Rozmazanie
+                {t('edit.blur')}
               </label>
             </div>
           )}
 
-          {/* Upload obrazu dla nowego tła */}
           {settings.background.type === 'image' && (
             <div className="sub-options">
               <input
@@ -159,17 +158,16 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                     onChange={(e) => handleSettingChange('background', 'blur', e.target.checked)}
                     disabled={isLoading}
                   />
-                  Rozmazanie
+                  {t('edit.blur')}
                 </label>
               )}
             </div>
           )}
 
-          {/* Wybór koloru dla jednolitego tła */}
           {settings.background.type === 'color' && (
             <div className="sub-options">
               <label>
-                Kolor tła:
+                {t('edit.color_choice')}
                 <input
                   type="color"
                   value={settings.background.color}
@@ -181,9 +179,8 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
           )}
         </div>
 
-        {/* Efekty */}
         <div className="edit-section">
-          <h4>Efekty</h4>
+          <h4>{t('edit.effects')}</h4>
           <div className="radio-group">
             <label>
               <input
@@ -194,7 +191,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('effect', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Brak
+              {t('edit.effects_none')}
             </label>
             <label>
               <input
@@ -205,26 +202,14 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleSettingChange('effect', 'type', e.target.value)}
                 disabled={isLoading}
               />
-              Kolorowa obwódka
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="effect"
-                value="shadow"
-                checked={settings.effect.type === 'shadow'}
-                onChange={(e) => handleSettingChange('effect', 'type', e.target.value)}
-                disabled={isLoading}
-              />
-              Cień
+              {t('edit.effects_border')}
             </label>
           </div>
 
-          {/* Wybór koloru dla obwódki */}
           {settings.effect.type === 'border' && (
             <div className="sub-options">
               <label>
-                Kolor obwódki:
+                {t('edit.color_choice')}
                 <input
                   type="color"
                   value={settings.effect.color}
@@ -236,9 +221,8 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
           )}
         </div>
 
-        {/* Metoda łączenia */}
         <div className="edit-section">
-          <h4>Metoda łączenia</h4>
+          <h4>{t('edit.blend_method')}</h4>
           <div className="radio-group">
             <label>
               <input
@@ -249,7 +233,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleDirectSettingChange('blendingMethod', e.target.value)}
                 disabled={isLoading}
               />
-              Prosta
+              {t('edit.blend_method_simple')}
             </label>
             <label>
               <input
@@ -260,7 +244,7 @@ const EditMenu = ({ settings, onSettingsChange, isLoading, onApplySettings, hasI
                 onChange={(e) => handleDirectSettingChange('blendingMethod', e.target.value)}
                 disabled={isLoading}
               />
-              Ulepszona
+              {t('edit.blend_method_advanced')}
             </label>
           </div>
         </div>

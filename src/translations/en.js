@@ -24,6 +24,27 @@ const en = {
       errorProcessing: "There was a problem processing the image",
       successMessage: "Background has been successfully removed!"
     },
+
+    // Edit options
+    edit: {
+      title: "Edit options",
+      model: "AI Model",
+      model_original: "Original",
+      model_custom: "Custom",
+      background: "Background",
+      background_original: "Original",
+      background_new: "Another image",
+      background_color: "Solid color",
+      background_none: "None",
+      blur: "Blur",
+      color_choice: "Choose a color:",
+      effects: "Effects",
+      effects_none: "None",
+      effects_border: "Color border",
+      blend_method: "Blend method",
+      blend_method_simple: "Simple",
+      blend_method_advanced: "Advanced",
+    },
     
     // How it works
     howItWorks: {
@@ -31,19 +52,11 @@ const en = {
       step1Title: "Select an Image",
       step1Description: "Drag and drop an image to the upload area or click to select a file from your computer. We support JPG and PNG formats.",
       step2Title: "Automatic Processing",
-      step2Description: "Our advanced algorithm using artificial intelligence will automatically detect and remove the background from your image. The entire process takes just a few seconds.",
+      step2Description: "Our AI model will automatically detect and remove the background from your image. The entire process takes just a few seconds.",
       step3Title: "Download the Result",
-      step3Description: "After processing is complete, you'll see a preview of the image without a background. You can download it in PNG format with a transparent background, ready to use in your projects.",
+      step3Description: "After processing is complete, you'll see a preview of the image without a background. You can download it in PNG format with a transparent background, ready to use in your projects, or you can edit it inside the app.",
       technologyTitle: "Technology",
-      technologyDescription1: "Our application uses advanced deep neural networks to precisely separate foreground objects from the background. The system is based on a U-Net architecture with additional attention layers, allowing for accurate recognition of even complex shapes and details.",
-      technologyDescription2: "The processing includes:",
-      technologyList: [
-        "Preliminary image analysis using convolutional neural networks (CNN)",
-        "Semantic segmentation using deep learning and vision transformers",
-        "Precise edge extraction using neural network-enhanced edge detection algorithms",
-        "Final processing with machine learning techniques for the highest quality"
-      ],
-      technologyDescription3: "", // Usunięty fragment
+      technologyDescription: "Our application uses deep neural networks to precisely separate foreground objects from the background. The system is based on the MODNet architecture, allowing for accurate recognition of even complex shapes and details.",
       useCasesTitle: "Use Cases",
       useCase1Title: "E-commerce",
       useCase1Description: "Create professional product images with transparent backgrounds, perfect for online stores.",

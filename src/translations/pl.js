@@ -24,6 +24,27 @@ const pl = {
       errorProcessing: "Wystąpił problem z przetwarzaniem obrazu",
       successMessage: "Tło zostało pomyślnie usunięte!"
     },
+
+    // Opcje edycji
+    edit: {
+      title: "Opcje edycji",
+      model: "Model AI",
+      model_original: "Oryginalny",
+      model_custom: "Własny",
+      background: "Tło",
+      background_original: "Oryginalne",
+      background_new: "Inny obraz",
+      background_color: "Pojedynczy kolor",
+      background_none: "Brak tła",
+      blur: "Rozmazanie",
+      color_choice: "Wybierz kolor:",
+      effects: "Efekty",
+      effects_none: "Brak",
+      effects_border: "Kolorowa obwódka",
+      blend_method: "Metoda łączenia",
+      blend_method_simple: "Prosta",
+      blend_method_advanced: "Ulepszona",
+    },
     
     // Jak to działa
     howItWorks: {
@@ -31,19 +52,11 @@ const pl = {
       step1Title: "Wybierz zdjęcie",
       step1Description: "Przeciągnij i upuść zdjęcie do obszaru przesyłania lub kliknij, aby wybrać plik z komputera. Obsługujemy formaty JPG i PNG.",
       step2Title: "Automatyczne przetwarzanie",
-      step2Description: "Nasz zaawansowany algorytm wykorzystujący sztuczną inteligencję automatycznie wykryje i usunie tło z Twojego zdjęcia. Cały proces zajmuje zaledwie kilka sekund.",
+      step2Description: "Nasz model sztucznej inteligencji automatycznie wykryje i usunie tło z Twojego zdjęcia. Cały proces zajmuje zaledwie kilka sekund.",
       step3Title: "Pobierz wynik",
-      step3Description: "Po zakończeniu przetwarzania zobaczysz podgląd zdjęcia bez tła. Możesz je pobrać w formacie PNG z przezroczystym tłem, gotowe do wykorzystania w Twoich projektach.",
+      step3Description: "Po zakończeniu przetwarzania zobaczysz podgląd zdjęcia bez tła. Możesz je pobrać w formacie PNG z przezroczystym tłem, gotowe do wykorzystania w Twoich projektach, lub edytować je w aplikacji.",
       technologyTitle: "Technologia",
-      technologyDescription1: "Nasza aplikacja wykorzystuje zaawansowane głębokie sieci neuronowe do precyzyjnego oddzielenia obiektów pierwszego planu od tła. System oparty jest na architekturze U-Net z dodatkowymi warstwami uwagi (attention layers), co pozwala na dokładne rozpoznawanie nawet skomplikowanych kształtów i detali.",
-      technologyDescription2: "Proces przetwarzania obejmuje:",
-      technologyList: [
-        "Wstępną analizę obrazu przy użyciu konwolucyjnych sieci neuronowych (CNN)",
-        "Segmentację semantyczną wykorzystującą głębokie uczenie i transformatory wizyjne",
-        "Precyzyjne wyodrębnienie krawędzi z wykorzystaniem algorytmów wykrywania krawędzi wspieranych przez sieci neuronowe",
-        "Przetwarzanie końcowe z zastosowaniem technik uczenia maszynowego dla zachowania najwyższej jakości"
-      ],
-      technologyDescription3: "", // Usunięty fragment
+      technologyDescription: "Nasza aplikacja wykorzystuje głębokie sieci neuronowe do precyzyjnego oddzielenia obiektów pierwszego planu od tła. System oparty jest na architekturze MODNet, co pozwala na dokładne rozpoznawanie nawet skomplikowanych kształtów i detali.",
       useCasesTitle: "Zastosowania",
       useCase1Title: "E-commerce",
       useCase1Description: "Twórz profesjonalne zdjęcia produktów z przezroczystym tłem, idealne do sklepów internetowych.",

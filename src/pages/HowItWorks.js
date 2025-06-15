@@ -5,7 +5,6 @@ import './HowItWorks.css';
 const HowItWorks = () => {
   const { t } = useLanguage();
   
-  // Pobierz listę technologii
   const technologyList = t('howItWorks.technologyList');
   
   return (
@@ -41,16 +40,7 @@ const HowItWorks = () => {
         
         <div className="tech-info">
           <h2>{t('howItWorks.technologyTitle')}</h2>
-          <p>{t('howItWorks.technologyDescription1')}</p>
-          
-          <p>{t('howItWorks.technologyDescription2')}</p>
-          <ul>
-            {Array.isArray(technologyList) && technologyList.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-          
-          {/* Usunięty fragment o treningu modelu */}
+          <p>{t('howItWorks.technologyDescription')}</p>
         </div>
         
         <div className="use-cases">
